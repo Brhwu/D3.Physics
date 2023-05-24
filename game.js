@@ -435,11 +435,44 @@ class level3 extends Phaser.Scene {
     }
 }
 
+class outro extends Phaser.Scene {
+    constructor() {
+        super('outro');
+    }
+    preload() {
+        this.load.image("player", 'assets/mc.png')
+        this.load.image("enemyded", 'assets/enemyded.png')
+        this.load.image("portal", 'assets/portal.png')
+        this.load.image("supplies", 'assets/supplies.png')
+    }
+    create() {
+        this.player = this.physics.add.image(100, 200, 'player');
+        this.sent1 = this.add.text(50, 50, 'Congratulations!');
+        this.sent1.setScale(1.5);
+        this.sent2 = this.add.text(50, 100, 'With your epic supply collecting skills the zombies have died.');
+        this.sent2.setScale(1.5);
+        this.supplies = this.physics.add.image(100, 600, 'supplies');
+        this.supplies.setScale(1);
+        this.supplies1 = this.physics.add.image(500, 600, 'supplies');
+        this.supplies1.setScale(1);
+        this.enemy = this.physics.add.image(300, 300, 'enemyded');
+        this.enemy1 = this.physics.add.image(600, 500, 'enemyded');
+        this.enemy2 = this.physics.add.image(900, 600, 'enemyded');
+        this.enemy3 = this.physics.add.image(900, 300, 'enemyded');
+        this.enemy4 = this.physics.add.image(600, 300, 'enemyded');
+        this.enemy5 = this.physics.add.image(300, 500, 'enemyded');
+
+        this.portal = this.physics.add.image(650, 700, 'portal')
+        this.sent1 = this.add.text(50, 700, 'Refresh the page to play again.');
+        this.sent1.setScale(1.5);
+    }
+}
+
 new Phaser.Game({
     width: 1000, 
     height: 780, 
     backgroundColor: '#3498db', 
-    scene: [intro2, intro, level1, level2, level3], 
+    scene: [intro2, intro, level1, level2, level3, outro], 
     physics: { default: 'arcade' }, 
     parent: 'game', 
 });
