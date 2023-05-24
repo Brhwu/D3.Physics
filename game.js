@@ -62,7 +62,7 @@ class level1 extends Phaser.Scene {
 
         // Display the score in the top left corner
         // Parameters: x position, y position, text, style
-        this.scoreText = this.add.text(20, 20, 'score: ' + this.score, style);
+        this.scoreText = this.add.text(20, 20, 'Supplies: ' + this.score, style);
     }
 
     enemyFollows () {
@@ -82,7 +82,7 @@ class level1 extends Phaser.Scene {
         this.score += 1;
 
         // Display the updated score on the screen
-        this.scoreText.setText('score: ' + this.score);
+        this.scoreText.setText('Supplies: ' + this.score);
     }
 
     hitEnemy() {
@@ -126,6 +126,38 @@ class level1 extends Phaser.Scene {
     }
 }
 
+/* class intro2 extends Phaser.Scene {
+    constructor() {
+        super('intro2');
+    }
+    preload() {
+        this.load.image("player", 'assets/mc.png')
+        this.load.image("enemy", 'assets/enemy.png')
+        this.load.image("portal", 'assets/portal.png')
+        this.load.image("supplies", 'assets/supplies.png')
+    }
+    create() {
+        this.player = this.physics.add.image(100, 200, 'player');
+        //this.sent1 = this.add.text(50, 50, 'This is you.  You are a roamer of the wasteland looking for supplies.');
+        //this.sent2 = this.add.text(50, 100, 'When playing use the arrow keys to move.');
+        //this.sent3 = this.add.text(50, 300, 'This is an image of a zombie, if you encounter one and it touches you, you will die.');
+        this.enemy = this.add.image(100, 400, 'enemy');
+        this.enemy2 = this.add.image(100, 400, 'enemy');
+        this.enemy3 = this.add.image(100, 400, 'enemy');
+        //this.portal = this.physics.add.sprite(900, 600, 'portal');
+        //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
+        //this.sent4 = this.add.text(50, 500, 'These are supplies.  You will have to collect 10 of these before you can leave.');
+        this.supplies = this.physics.add.image(100, 600, 'supplies');
+        this.supplies.setScale(0.5);
+
+        this.sent5 = this.add.text(400, 750, 'This is a portal, you will have to move here to leave.');
+        this.portal = this.physics.add.image(650, 700, 'portal')
+        this.time.delayedCall(6000, () => {
+            this.scene.start('level1');     
+        });
+
+    }
+} */
 
 
 class level2 extends Phaser.Scene {
@@ -151,6 +183,8 @@ class level2 extends Phaser.Scene {
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
         this.supplies.setScale(0.5);
 
+        
+
         // Store the score in a variable, initialized at 0
         this.score = 0;
         
@@ -161,7 +195,7 @@ class level2 extends Phaser.Scene {
 
         // Display the score in the top left corner
         // Parameters: x position, y position, text, style
-        this.scoreText = this.add.text(20, 20, 'score: ' + this.score, style);
+        this.scoreText = this.add.text(20, 20, 'Supplies: ' + this.score, style);
     }
 
     enemyFollows () {
@@ -183,7 +217,7 @@ class level2 extends Phaser.Scene {
         this.score += 1;
 
         // Display the updated score on the screen
-        this.scoreText.setText('score: ' + this.score);
+        this.scoreText.setText('Supplies: ' + this.score);
     }
 
     hitEnemy() {
@@ -236,6 +270,41 @@ class level2 extends Phaser.Scene {
     }
 }
 
+class intro2 extends Phaser.Scene {
+    constructor() {
+        super('intro2');
+    }
+    preload() {
+        this.load.image("player", 'assets/mc.png')
+        this.load.image("enemy", 'assets/enemy.png')
+        this.load.image("portal", 'assets/portal.png')
+        this.load.image("supplies", 'assets/supplies.png')
+    }
+    create() {
+        this.player = this.physics.add.image(100, 200, 'player');
+        this.sent1 = this.add.text(50, 50, 'Careful, this time you have to collect 15 supplies');
+        this.sent1.setScale(1.5);
+        this.sent2 = this.add.text(50, 100, 'Tip: You can move diagonally to move faster.');
+        this.sent2.setScale(1.5);
+        this.supplies = this.physics.add.image(100, 600, 'supplies');
+        this.supplies.setScale(1);
+        this.supplies1 = this.physics.add.image(500, 600, 'supplies');
+        this.supplies1.setScale(1);
+        this.enemy = this.physics.add.sprite(300, 300, 'enemy');
+        this.enemy1 = this.physics.add.sprite(600, 500, 'enemy');
+        this.enemy2 = this.physics.add.sprite(900, 600, 'enemy');
+        this.enemy3 = this.physics.add.sprite(900, 300, 'enemy');
+        this.enemy4 = this.physics.add.sprite(600, 300, 'enemy');
+        this.enemy5 = this.physics.add.sprite(300, 500, 'enemy');
+
+        this.portal = this.physics.add.image(650, 700, 'portal')
+        this.time.delayedCall(6000, () => {
+            this.scene.start('level3');     
+        });
+
+    }
+}
+
 class level3 extends Phaser.Scene {
     constructor() {
         super('level3');
@@ -246,6 +315,7 @@ class level3 extends Phaser.Scene {
         this.load.image("portal", 'assets/portal.png')
         this.load.image("spawner", 'assets/spawner.png')
         this.load.image("supplies", 'assets/supplies.png')
+        this.load.image("merged", 'assets/merged.png')
     }
     create() {
         this.player = this.physics.add.sprite(100, 100, 'player');
@@ -254,6 +324,9 @@ class level3 extends Phaser.Scene {
         this.enemy = this.physics.add.sprite(300, 300, 'enemy');
         this.enemy1 = this.physics.add.sprite(600, 500, 'enemy');
         this.enemy2 = this.physics.add.sprite(900, 600, 'enemy');
+        this.enemy3 = this.physics.add.sprite(900, 300, 'enemy');
+        this.enemy4 = this.physics.add.sprite(600, 300, 'enemy');
+        this.enemy5 = this.physics.add.sprite(300, 500, 'enemy');
         //this.portal = this.physics.add.sprite(900, 600, 'portal');
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
@@ -261,6 +334,8 @@ class level3 extends Phaser.Scene {
 
         // Store the score in a variable, initialized at 0
         this.score = 0;
+
+        this.mergespeed = 0;
         
         // The style of the text 
         // A lot of options are available, these are the most important ones
@@ -269,13 +344,16 @@ class level3 extends Phaser.Scene {
 
         // Display the score in the top left corner
         // Parameters: x position, y position, text, style
-        this.scoreText = this.add.text(20, 20, 'score: ' + this.score, style);
+        this.scoreText = this.add.text(20, 20, 'Supplies: ' + this.score, style);
     }
 
     enemyFollows () {
         this.physics.moveToObject(this.enemy, this.player, 50 + (this.score * 10));
-        this.physics.moveToObject(this.enemy1, this.player, 20 + (this.score * 20));
+        this.physics.moveToObject(this.enemy1, this.player, 20 + (this.score * 10));
         this.physics.moveToObject(this.enemy2, this.player, 70 + (this.score * 5));
+        this.physics.moveToObject(this.enemy3, this.player, 90 + (this.score * 1));
+        this.physics.moveToObject(this.enemy4, this.player, 30 + (this.score * 5));
+        this.physics.moveToObject(this.enemy5, this.player, 30 + (this.score * 5));
     }
 
     /* enemyDuplicate () {
@@ -291,19 +369,26 @@ class level3 extends Phaser.Scene {
         this.score += 1;
 
         // Display the updated score on the screen
-        this.scoreText.setText('score: ' + this.score);
+        this.scoreText.setText('Supplies: ' + this.score);
     }
 
     hitEnemy() {
         this.player.destroy();
     }
 
-    
+    enemyMerge() {
+        mergespeed += 1;
+    }
+
+    mergedFollows() {
+        this.physics.moveToObject(this.merged, this.player, 70 + (this.score * 10));
+    }
 
     update() {
         this.enemyFollows();
+        //this.mergedFollows();
 
-        if (this.score >= 10) {
+        if (this.score >= 15) {
             this.portal = this.physics.add.sprite(900, 600, 'portal');
         }
 
@@ -318,14 +403,20 @@ class level3 extends Phaser.Scene {
         if (this.physics.overlap(this.player, this.enemy1)) {
             this.hitEnemy();
         }
-        if (this.physics.overlap(this.player, this.enemy1)) {
-            this.hitEnemy();
-        }
         if (this.physics.overlap(this.player, this.enemy2)) {
             this.hitEnemy();
         }
+        if (this.physics.overlap(this.player, this.enemy3)) {
+            this.hitEnemy();
+        }
+        if (this.physics.overlap(this.player, this.enemy4)) {
+            this.hitEnemy();
+        }
+        if (this.physics.overlap(this.player, this.enemy5)) {
+            this.hitEnemy();
+        }
         if (this.physics.overlap(this.player, this.portal)) {
-            this.scene.start('level3');
+            this.scene.start('intro');
         }
         if (this.arrow.right.isDown) {
             this.player.x += 4;
@@ -348,7 +439,7 @@ new Phaser.Game({
     width: 1000, 
     height: 780, 
     backgroundColor: '#3498db', 
-    scene: [intro, level1, level2, level3], 
+    scene: [intro2, intro, level1, level2, level3], 
     physics: { default: 'arcade' }, 
     parent: 'game', 
 });
