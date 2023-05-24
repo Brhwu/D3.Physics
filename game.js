@@ -24,7 +24,6 @@ class intro extends Phaser.Scene {
         this.sent5 = this.add.text(400, 700, 'This is a portal, you will have to move here to leave.');
         this.portal = this.add.image(650, 650, 'portal')
         this.sent6 = this.add.text(400, 750, 'Click on the portal to play.');
-        this.portal.setInterative();
         this.time.delayedCall(6000, () => {
             this.scene.start('level1');     
         }); 
