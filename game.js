@@ -11,20 +11,22 @@ class intro extends Phaser.Scene {
     create() {
         this.player = this.physics.add.image(100, 200, 'player');
         this.sent1 = this.add.text(50, 50, 'This is you.  You are a roamer of the wasteland looking for supplies.');
-        this.sent2 = this.add.text(50, 100, 'When playing use the arrow keys to move.');
+        this.sent2 = this.add.text(50, 75, 'When playing use the arrow keys to move.');
 
-        this.sent3 = this.add.text(50, 300, 'This is an image of a zombie, if you encounter one and it touches you, you will die.');
+        this.sent3 = this.add.text(50, 300, 'This is an image of a zombie, if will follow you around and if it touches you, you will die.');
+        this.sent8 = this.add.text(50, 325, 'Zombies will gradually get faster the more supplies you get.');
         this.enemy = this.add.image(100, 400, 'enemy');
         //this.portal = this.physics.add.sprite(900, 600, 'portal');
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.sent4 = this.add.text(50, 500, 'These are supplies.  You will have to collect 10 of these before you can leave.');
+        this.sent7 = this.add.text(50, 525, 'You can click on them to collect them as well but be careful you need to be alive to continue.');
         this.supplies = this.physics.add.image(100, 600, 'supplies');
         this.supplies.setScale(0.5);
 
         this.sent5 = this.add.text(400, 700, 'This is a portal, you will have to move here to leave.');
         this.portal = this.add.image(650, 650, 'portal')
         this.portal.setInteractive();
-        this.sent6 = this.add.text(400, 750, 'Click on the portal to play.');
+        this.sent6 = this.add.text(400, 725, 'Click on the portal to play.');
         this.input.on('gameobjectdown', () => {this.scene.start('level1');})
         /* this.time.delayedCall(6000, () => {
             this.scene.start('level1');     
@@ -54,7 +56,8 @@ class level1 extends Phaser.Scene {
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
         this.supplies.setScale(0.5);
-        
+        this.supplies.setInteractive();
+        this.input.on('gameobjectdown', () => {this.hitSupplies();})
 
         // Store the score in a variable, initialized at 0
         this.score = 0;
@@ -154,7 +157,8 @@ class level2 extends Phaser.Scene {
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
         this.supplies.setScale(0.5);
-
+        this.supplies.setInteractive();
+        this.input.on('gameobjectdown', () => {this.hitSupplies();})
         
 
         // Store the score in a variable, initialized at 0
@@ -223,7 +227,7 @@ class level2 extends Phaser.Scene {
             this.hitEnemy();
         }
         if (this.physics.overlap(this.player, this.portal)) {
-            //this.scene.start('level2');
+            this.scene.start('intro2');
         }
         if (this.arrow.right.isDown) {
             this.player.x += 4;
@@ -303,11 +307,11 @@ class level3 extends Phaser.Scene {
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
         this.supplies.setScale(0.5);
+        this.supplies.setInteractive();
+        this.input.on('gameobjectdown', () => {this.hitSupplies();})
 
         // Store the score in a variable, initialized at 0
         this.score = 0;
-
-        this.mergespeed = 0;
         
         // The style of the text 
         // A lot of options are available, these are the most important ones
@@ -388,7 +392,7 @@ class level3 extends Phaser.Scene {
             this.hitEnemy();
         }
         if (this.physics.overlap(this.player, this.portal)) {
-            this.scene.start('intro');
+            this.scene.start('outro');
         }
         if (this.arrow.right.isDown) {
             this.player.x += 4;
