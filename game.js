@@ -23,10 +23,12 @@ class intro extends Phaser.Scene {
 
         this.sent5 = this.add.text(400, 700, 'This is a portal, you will have to move here to leave.');
         this.portal = this.add.image(650, 650, 'portal')
+        this.portal.setInteractive();
         this.sent6 = this.add.text(400, 750, 'Click on the portal to play.');
-        this.time.delayedCall(6000, () => {
+        this.input.on('gameobjectdown', () => {this.scene.start('level1');})
+        /* this.time.delayedCall(6000, () => {
             this.scene.start('level1');     
-        }); 
+        }); */
 
     }
 
@@ -52,6 +54,7 @@ class level1 extends Phaser.Scene {
         //this.spawner = this.physics.add.sprite(900, 600, 'spawner');
         this.supplies = this.physics.add.sprite(500, 600, 'supplies');
         this.supplies.setScale(0.5);
+        
 
         // Store the score in a variable, initialized at 0
         this.score = 0;
